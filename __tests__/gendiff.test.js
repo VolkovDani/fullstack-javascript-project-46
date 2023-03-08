@@ -1,8 +1,8 @@
 import { genDiff } from "../src/genDiff.js"
 import { test, expect } from "@jest/globals"
 
-const firstFile = '__tests__/res/file1.json'
-const secondFile = '__tests__/res/file2.json'
+const firstFile = '__tests__/__fixtures__/file1.json'
+const secondFile = '__tests__/__fixtures__/file2.json'
 const finalJSON = 
 `{
   - follow: false
