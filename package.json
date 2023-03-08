@@ -2,7 +2,7 @@
   "name": "@hexlet/code",
   "version": "0.0.1",
   "description": "[![Actions Status](https://github.com/DanilCrazy99/fullstack-javascript-project-46/workflows/hexlet-check/badge.svg)](https://github.com/DanilCrazy99/fullstack-javascript-project-46/actions)",
-  "main": "src/gendiff.js",
+  "main": "bin/genDiff.js",
   "type": "module",
   "scripts": {
     "test": "jest"
@@ -17,6 +17,7 @@
   },
   "devDependencies": {
     "@jest/globals": "^29.4.3",
-    "jest": "^29.4.3"
+    "jest": "^29.4.3",
+    "lodash": "^4.17.21"
   }
 }
