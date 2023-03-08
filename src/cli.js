@@ -9,7 +9,7 @@ program
   .arguments('<filepath1> <filepath2>')
   .option('-f, --format <type>', 'Choose type file')
   .action((filepath1, filepath2) => {
-    
+    console.log(genDiff(filepath1, filepath2)); 
   })
 
 export default program;
