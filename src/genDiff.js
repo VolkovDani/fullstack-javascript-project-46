@@ -38,7 +38,7 @@ const differenceJSON = (file1, file2) => {
   const finalArr = _.sortBy(arr, [(item) => item[0]])
   let str = '{\n';
   finalArr.map((item) => {
-    str += ` ${item[2] == '=' ? ' ' : item[2]} ${item[0]}: ${item[1]}\n`
+    str += `  ${item[2] == '=' ? ' ' : item[2]} ${item[0]}: ${item[1]}\n`
   })
   str += '}';
   return str
