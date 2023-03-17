@@ -10,4 +10,6 @@ lint:
 
 test:
 		npm test
-		
+
+test_coverage:
+		npx jest --coverage
