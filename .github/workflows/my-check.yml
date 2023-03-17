@@ -18,4 +18,4 @@ jobs:
 
       - name: Test jest
         run: make test
-        need: Test eslint
+        needs: Test eslint
