@@ -6,18 +6,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-
       - uses: actions/setup-node@v3
         with:
           cache: 'npm'
 
       - run: make install
-  test 1:
-    steps:
       - name: Test eslint
         run: make lint
-  test 2:
-    needs: Test eslint
+  test:
+    runs-on: ubuntu-latest
+    needs: build
     steps:
+      - uses: actions/checkout@v3
       - name: Test jest
         run: make test
