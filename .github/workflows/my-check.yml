@@ -12,10 +12,12 @@ jobs:
           cache: 'npm'
 
       - run: make install
-
+  test 1:
+    steps:
       - name: Test eslint
         run: make lint
-
+  test 2:
+    needs: Test eslint
+    steps:
       - name: Test jest
         run: make test
-        needs: Test eslint
