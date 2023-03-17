@@ -16,7 +16,7 @@ jobs:
       - name: Test jest
         run: make test
       - uses: paambaati/codeclimate-action@v2.2.4
-          env:
-            CC_TEST_REPORTER_ID: ce7a4a525c5c5477c7dcfbb607348671e6b7f2b53d9caf337c708b66697a7e44
-          with:
-            coverageCommand: npx jest --coverage
+        env:
+          CC_TEST_REPORTER_ID: ce7a4a525c5c5477c7dcfbb607348671e6b7f2b53d9caf337c708b66697a7e44
+        with:
+          coverageCommand: npx jest --coverage
