@@ -16,3 +16,11 @@ const finalJSON =
 test('Test 1', () => {
   expect(genDiff(firstFile, secondFile)).toStrictEqual(finalJSON)
 })
+
+test('Test throw err', () => {
+  expect(genDiff).toThrow('Пустой путь к файлу')
+})
+
+// test('Test uncorrect file', () => {
+//   expect(genDiff('afa', 'aght')).toThrow('Нет файла для сравнения')
+// })

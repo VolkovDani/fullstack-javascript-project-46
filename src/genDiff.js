@@ -4,18 +4,20 @@ import _ from 'lodash';
 
 
 const makejson = (filepath) => {
+  if (!filepath) throw Error('Пустой путь к файлу')
   let str = '';
   try {
     str = readFileSync(path.resolve(filepath), 'utf-8', (err) => {
     if (err) throw err;
   });
   } catch (e) {
-    console.log(e.name + ': ' + e.message);
+    return console.error(e.name + ': ' + e.message);
   }
   return JSON.parse(str);
 }
 
 const differenceJSON = (file1, file2) => {
+  if (!file1 || !file2) throw Error('Нет файла для сравнения')
   const arr = [];
   const arr2 = Object.entries(file2)
   for (const [key, value] of Object.entries(file1)) {
@@ -44,8 +46,6 @@ const differenceJSON = (file1, file2) => {
   return str
 }
 
-const genDiff = (filepath1, filepath2) => differenceJSON(makejson(filepath1), makejson(filepath2));
-
-// console.log(differenceJSON(makejson(firstFile), makejson(secondFile))); 
+const genDiff = (filepath1, filepath2) => differenceJSON(makejson(filepath1), makejson(filepath2))
 
 export { genDiff };
