@@ -19,8 +19,12 @@ test("Test YAML", () => {
   expect(genDiff("./__fixtures__/file1.yml", "./__fixtures__/file2.yaml")).toStrictEqual(finalResult)
 })
 
-test("Test throw err", () => {
-  expect(genDiff).toThrow("Пустой путь к файлу");
+test("Test err path", () => {
+  expect(genDiff).toThrowError("Пустой путь к файлу");
+});
+
+test("Test err extension", () => {
+  expect(genDiff("./__fixtures__/file1.yml", "./__fixtures__/fakefile.ya")).toThrowError("Не поддерживаемый формат файла");
 });
 
 // test('Test uncorrect file', () => {

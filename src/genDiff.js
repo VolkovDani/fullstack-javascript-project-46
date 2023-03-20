@@ -1,17 +1,6 @@
-import { readFileSync } from "node:fs";
-import path from "node:path";
 import _ from "lodash";
+import parceFile from "../utils/parcers.js";
 
-const openFile = (filepath) => {
-  if (!filepath) throw Error("Пустой путь к файлу");
-  let str = "";
-  try {
-    str = readFileSync(path.resolve(filepath), "utf-8");
-  } catch (e) {
-    return console.error(e.name + ": " + e.message);
-  }
-  return JSON.parse(str);
-};
 
 const differenceFiles = (file1, file2) => {
   if (!file1 || !file2) throw Error("Нет файла для сравнения");
@@ -44,13 +33,13 @@ const differenceFiles = (file1, file2) => {
 };
 
 const genDiff = (filepath1, filepath2) =>
-  differenceFiles(openFile(filepath1), openFile(filepath2));
+  differenceFiles(parceFile(filepath1), parceFile(filepath2));
 
-// console.log(
-//   genDiff(
-//     "./__fixtures__/file1.json",
-//     "./__fixtures__/file2.json"
-//   )
-// );
+console.log(
+  genDiff(
+    "./__fixtures__/file1.yml",
+    "./__fixtures__/file2.yaml"
+  )
+);
 
 export default genDiff;
