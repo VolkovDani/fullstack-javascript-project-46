@@ -35,11 +35,4 @@ const differenceFiles = (file1, file2) => {
 const genDiff = (filepath1, filepath2) =>
   differenceFiles(parceFile(filepath1), parceFile(filepath2));
 
-console.log(
-  genDiff(
-    "./__fixtures__/file1.yml",
-    "./__fixtures__/file2.yaml"
-  )
-);
-
 export default genDiff;
