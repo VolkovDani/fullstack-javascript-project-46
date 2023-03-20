@@ -6,6 +6,8 @@
 <br>
 Work with:
 - JSON
+___
 [![asciicast](https://asciinema.org/a/wDZepp08ZKsxqzXYcC82ATpVf.svg)](https://asciinema.org/a/wDZepp08ZKsxqzXYcC82ATpVf)
 - YAML
+___
 [![asciicast](https://asciinema.org/a/JzBUs1XaJZJg0auaD6tx70hYh.svg)](https://asciinema.org/a/JzBUs1XaJZJg0auaD6tx70hYh)
