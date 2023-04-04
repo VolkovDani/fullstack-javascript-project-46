@@ -2,5 +2,3 @@
 /.vscode
 __tests__/manualTest.js
 /coverage
-/.eslintrc.yml
-/.prettierrc.extension.json
