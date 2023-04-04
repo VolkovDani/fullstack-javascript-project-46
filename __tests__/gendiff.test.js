@@ -34,6 +34,14 @@ test("Test err extension", () => {
   }).toThrowError("Не поддерживаемый формат файла");
 });
 
-// test('Test uncorrect file', () => {
-//   expect(genDiff('afa', 'aght')).toThrow('Нет файла для сравнения')
-// })
+test("Test JSON Recursia Diff", () => {
+  expect(
+    genDiff("./__fixtures__/file3.json", "./__fixtures__/file4.json")
+  ).toStrictEqual(readFile('finalResult2'));
+});
+
+test("Test YAML Recursia Diff", () => {
+  expect(
+    genDiff("./__fixtures__/file3.yml", "./__fixtures__/file4.yml")
+  ).toStrictEqual(readFile('finalResult2'));
+});
