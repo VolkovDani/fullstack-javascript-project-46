@@ -4,7 +4,7 @@ import path from "node:path";
 
 const allowedExt = [".json", ".yml", ".yaml"];
 
-const openFile = (filepath) => {
+const checkExt = (filepath) => {
   if (!filepath) throw Error("Пустой путь к файлу");
   const extFile = path.extname(filepath);
   if (!allowedExt.includes(extFile))
@@ -13,7 +13,7 @@ const openFile = (filepath) => {
 };
 
 const parceFile = (pathFile) => {
-  const extens = openFile(pathFile);
+  const extens = checkExt(pathFile);
   let str = "";
   try {
     str = readFileSync(path.resolve(pathFile), "utf-8");
