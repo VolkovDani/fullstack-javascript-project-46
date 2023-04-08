@@ -1,38 +1,51 @@
 import _ from "lodash";
 import parceFile from "../utils/parcers.js";
 
-
-const differenceFiles = (file1, file2) => {
-  if (!file1 || !file2) throw Error("Нет файла для сравнения");
-  const arr = [];
-  const arr2 = Object.entries(file2);
-  for (const [key, value] of Object.entries(file1)) {
-    if (Object.hasOwn(file2, key)) {
-      if (file2[key] == value) {
-        arr.push([key, value, "="]);
-      } else {
-        arr.push([key, value, "-"]);
+// Эта функция получает на вход два объекта
+// На выходе получаем третий объект с описанием разницы первых двух
+const getArrDifferenceFiles = (object1, object2, accumulator = []) => {
+  // const object1arr = Object.entries(object1);
+  Object.entries(object1).reduce((acc, [key, value]) => {
+    const innerObj = {};
+    innerObj.key = key;
+    innerObj.value = value;
+    if (Object.hasOwn(object2, key)) {
+      if (object2[key] == value) {
+        innerObj["diff"] = "=";
+      } else innerObj["diff"] = "-";
+    } else {
+      innerObj["diff"] = "-";
+    }
+    acc.push(innerObj);
+    return acc;
+  }, accumulator);
+  Object.entries(object2).reduce((acc, [key, value]) => {
+    const innerObj = {};
+    innerObj.key = key;
+    innerObj.value = value;
+    const findedKey = acc.find(({ key: keyInObj }) => keyInObj == key);
+    if (findedKey) {
+      if (findedKey.value != value) {
+        innerObj.diff = "+";
+        acc.push(innerObj);
       }
     } else {
-      arr.push([key, value, "-"]);
+      innerObj.diff = "+";
+      acc.push(innerObj);
     }
-  }
-  arr2.map((item) => {
-    const [key, value] = item;
-    if (file1[key] != value) {
-      arr.push([key, value, "+"]);
-    }
-  });
-  const finalArr = _.sortBy(arr, [(item) => item[0]]);
-  let str = "{\n";
-  finalArr.map((item) => {
-    str += `  ${item[2] == "=" ? " " : item[2]} ${item[0]}: ${item[1]}\n`;
-  });
-  str += "}";
-  return str;
+    return acc;
+  }, accumulator);
+  return accumulator;
 };
 
-const genDiff = (filepath1, filepath2) =>
-  differenceFiles(parceFile(filepath1), parceFile(filepath2));
+const genDiff = (filepath1, filepath2) => {
+  if (!filepath1 || !filepath2) throw Error("Нет файла для сравнения");
+  return getArrDifferenceFiles(parceFile(filepath1), parceFile(filepath2));
+};
 
+// Принимает массив объектов с описанием ключей[{ключ, значение, значение "разности файлов"},...]
+// Возвращает строку в формате "{ *значение дифа* ключ: значение }"
+// const diffToStr = (obj) => {
+//   obj
+// }
 export default genDiff;
