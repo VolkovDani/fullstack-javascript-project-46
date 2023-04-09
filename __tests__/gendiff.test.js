@@ -25,7 +25,9 @@ test("Test YAML", () => {
 });
 
 test("Test err path", () => {
-  expect(genDiff).toThrowError("Пустой путь к файлу");
+  expect(() => {
+    genDiff();
+  }).toThrowError("Пустой путь к файлу");
 });
 
 test("Test err extension", () => {

@@ -1,10 +1,10 @@
-import _ from "lodash";
+// import _ from "lodash";
 import parceFile from "../utils/parcers.js";
+import genStrWithDiffs from "../utils/genStrWithDiff.js";
 
 // Эта функция получает на вход два объекта
 // На выходе получаем третий объект с описанием разницы первых двух
 const getArrDifferenceFiles = (object1, object2, accumulator = []) => {
-  // const object1arr = Object.entries(object1);
   Object.entries(object1).reduce((acc, [key, value]) => {
     const innerObj = {};
     innerObj.key = key;
@@ -39,13 +39,9 @@ const getArrDifferenceFiles = (object1, object2, accumulator = []) => {
 };
 
 const genDiff = (filepath1, filepath2) => {
-  if (!filepath1 || !filepath2) throw Error("Нет файла для сравнения");
-  return getArrDifferenceFiles(parceFile(filepath1), parceFile(filepath2));
+  return genStrWithDiffs(
+    getArrDifferenceFiles(parceFile(filepath1), parceFile(filepath2))
+  );
 };
 
-// Принимает массив объектов с описанием ключей[{ключ, значение, значение "разности файлов"},...]
-// Возвращает строку в формате "{ *значение дифа* ключ: значение }"
-// const diffToStr = (obj) => {
-//   obj
-// }
 export default genDiff;
