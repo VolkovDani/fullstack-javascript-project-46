@@ -18,7 +18,7 @@ const parceFile = (pathFile) => {
   try {
     str = readFileSync(path.resolve(pathFile), "utf-8");
   } catch (e) {
-    return console.error(e.name + ": " + e.message);
+    throw Error(e.name + ": " + e.message);
   }
   switch (extens) {
     case ".json":
