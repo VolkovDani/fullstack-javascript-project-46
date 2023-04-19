@@ -16,8 +16,11 @@ const getArrDifferenceFiles = (object1, object2) => {
           innerObj.diff = "=";
         } else {
           if (typeof value == "object") {
+            if (typeof obj2[key] == "object") innerObj.diff = "=";
+            else {
+              innerObj.diff = "-";
+            }
             innerObj.value = prepareKeysFirstObj(value, obj2[key], []);
-            innerObj.diff = "=";
           } else innerObj.diff = "-";
         }
       } else {
@@ -35,19 +38,23 @@ const getArrDifferenceFiles = (object1, object2) => {
     // console.log(obj2);
     Object.entries(obj2).reduce((acc, [key, value]) => {
       const innerObj = {};
-      if (value != null && typeof value != 'string' && typeof value == "object"){
-        const innerAcc = acc[acc.reduce((acc, {key: name}) => {
-          acc.push(name)
-          return acc;
-        }, []).indexOf(key)]
-        if (innerAcc) 
-          innerObj.value = prepareKeysSecondObj(
-            value,
-            innerAcc.value
-          );
-        return acc
-      }
-      else innerObj.value = value;
+      if (
+        value != null &&
+        typeof value == "object"
+      ) {
+        const innerAcc =
+          acc[
+            acc
+              .reduce((acc, { key: name }) => {
+                acc.push(name);
+                return acc;
+              }, [])
+              .indexOf(key)
+          ];
+        if (innerAcc)
+          innerObj.value = prepareKeysSecondObj(value, innerAcc.value);
+        return acc;
+      } else innerObj.value = value;
       innerObj.key = key;
       const findedKey = acc.find(({ key: keyInObj }) => keyInObj == key);
       if (findedKey) {
