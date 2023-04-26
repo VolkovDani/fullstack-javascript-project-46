@@ -1,6 +1,6 @@
 import _ from 'lodash';
-import parceFile from '../utils/parcers.js';
-import genStrWithDiffs from '../utils/genStrWithDiff.js';
+import parceFile from './utils/parcers.js';
+import setFormat from './formatters/setFormat.js';
 
 const makeAstTree = (mainObj1, mainObj2) => {
   const keys = _.sortBy(_.union(_.keys(mainObj1), _.keys(mainObj2)));
@@ -23,18 +23,20 @@ const makeAstTree = (mainObj1, mainObj2) => {
   return treePart;
 };
 
-const genDiff = (filepath1, filepath2) => {
-  return genStrWithDiffs(
-    makeAstTree(parceFile(filepath1), parceFile(filepath2))
+
+const genDiff = (filepath1, filepath2, spaceStr = 'stylish') => {
+  
+  return setFormat(
+    makeAstTree(parceFile(filepath1), parceFile(filepath2)), spaceStr
   );
 };
 
-const firstObj = './__fixtures__/file3.json';
-const secondObj = './__fixtures__/file4.json';
+// const firstObj = './__fixtures__/file3.json';
+// const secondObj = './__fixtures__/file4.json';
 // console.log(JSON.stringify(getAllKeys(firstObj, secondObj)));
 // console.log(buildAstTree(firstObj, secondObj));
 // console.log(JSON.stringify(makeAstTree(firstObj, secondObj)));
 
 // console.log(getArrDifferenceFiles(parceFile("./__fixtures__/file1.json"), parceFile("./__fixtures__/file2.json")));
-console.log(genDiff(firstObj, secondObj));
+// console.log(genDiff(firstObj, secondObj));
 export default genDiff;

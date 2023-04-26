@@ -1,12 +1,13 @@
 import _ from 'lodash';
 
-const genStrWithDiffs = (arr) => {
+
+const genStr = (arr, spaceStr) => {
   let str = `{\n`;
   const prepareObjValue = (child, deep = 0) => {
     if (!_.isObject(child)) return `${child}\n`;
     let newStrPre = '{\n';
-    const templateSpace = ' '.repeat(4 + 4 * deep);
-    const templateSpaceForBracket = ' '.repeat(4 * deep);
+    const templateSpace = String(spaceStr).repeat(4 + 4 * deep);
+    const templateSpaceForBracket = String(spaceStr).repeat(4 * deep);
     _.keys(child).map((key) => {
       newStrPre += `${templateSpace}${key}: `;
       if (_.isObject(child[key])) {
@@ -21,7 +22,7 @@ const genStrWithDiffs = (arr) => {
     let newStr = '';
     child.map(({ key, children, status, value, newValue, oldValue }) => {
       let strObj = '';
-      const templateSpace = ' '.repeat(2 + 4 * deep);
+      const templateSpace = String(spaceStr).repeat(2 + 4 * deep);
       if (newValue || oldValue) {
         strObj +=
           `${templateSpace}- ` +
@@ -64,4 +65,4 @@ const genStrWithDiffs = (arr) => {
   return str;
 };
 
-export default genStrWithDiffs;
+export default genStr;
