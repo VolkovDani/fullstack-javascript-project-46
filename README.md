@@ -15,4 +15,5 @@ ___
 You can use other formats for generation string with diffs.
 Print argument -f or --format after files paths
 For example 'dots', format <dots>
+___
 [![asciicast](https://asciinema.org/a/w1XWyfCdopC5oyiSCWCG1OZla.svg)](https://asciinema.org/a/w1XWyfCdopC5oyiSCWCG1OZla)
