@@ -11,3 +11,8 @@ ___
 - YAML
 ___
 [![asciicast](https://asciinema.org/a/JzBUs1XaJZJg0auaD6tx70hYh.svg)](https://asciinema.org/a/JzBUs1XaJZJg0auaD6tx70hYh)
+
+You can use other formats for generation string with diffs.
+Print argument -f or --format after files paths
+For example 'dots', format <dots>
+[![asciicast](https://asciinema.org/a/w1XWyfCdopC5oyiSCWCG1OZla.svg)](https://asciinema.org/a/w1XWyfCdopC5oyiSCWCG1OZla)
