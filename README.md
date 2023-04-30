@@ -17,3 +17,6 @@ Print argument -f or --format after files paths
 For example 'dots', format <dots>
 ___
 [![asciicast](https://asciinema.org/a/w1XWyfCdopC5oyiSCWCG1OZla.svg)](https://asciinema.org/a/w1XWyfCdopC5oyiSCWCG1OZla)
+Or you can use "plain"
+___
+[![asciicast](https://asciinema.org/a/Dgcrh0oxFvBq2mswk4Ba1bhr4.svg)](https://asciinema.org/a/Dgcrh0oxFvBq2mswk4Ba1bhr4)
