@@ -13,10 +13,10 @@ ___
 [![asciicast](https://asciinema.org/a/JzBUs1XaJZJg0auaD6tx70hYh.svg)](https://asciinema.org/a/JzBUs1XaJZJg0auaD6tx70hYh)
 
 You can use other formats for generation string with diffs.
-Print argument -f or --format after files paths
-For example 'dots', format <dots>
+Print argument -f or --format after files paths and write one of the format options
+For example 'stylish-dots', `gendiff firstFile.ext secondFile.ext -f stylish-dots`
 ___
-[![asciicast](https://asciinema.org/a/w1XWyfCdopC5oyiSCWCG1OZla.svg)](https://asciinema.org/a/w1XWyfCdopC5oyiSCWCG1OZla)
+[![asciicast](https://asciinema.org/a/nkHM9KwYr7dQfc0MO6CbRFlOx.svg)](https://asciinema.org/a/nkHM9KwYr7dQfc0MO6CbRFlOx)
 
 Or you can use "plain"
 ___
