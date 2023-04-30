@@ -47,3 +47,9 @@ test("Test YAML Recursia Diff", () => {
     genDiff("./__fixtures__/file3.yml", "./__fixtures__/file4.yml")
   ).toStrictEqual(readFile('finalResult2'));
 });
+
+test("Test JSON Diff format Plain", () => {
+  expect(
+    genDiff("./__fixtures__/file3.json", "./__fixtures__/file4.json", "plain")
+  ).toStrictEqual(readFile('finalResult3'))
+})
