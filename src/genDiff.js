@@ -40,7 +40,7 @@ export default genDiff;
 // console.log(setFormat(makeAstTree(parceFile(firstObj), parceFile(secondObj)), 'plain'));
 // console.log(JSON.stringify(getAllKeys(firstObj, secondObj)));
 // console.log(buildAstTree(firstObj, secondObj));
-// console.log(JSON.stringify(makeAstTree(firstObj, secondObj)));
+// console.log(genDiff(firstObj, secondObj, 'json'));
 
 // console.log(getArrDifferenceFiles(parceFile("./__fixtures__/file1.json"), parceFile("./__fixtures__/file2.json")));
 // console.log(genDiff(firstObj, secondObj));
