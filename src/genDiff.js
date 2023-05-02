@@ -1,6 +1,6 @@
 import parceFile from './utils/parcers.js';
 import setFormat from './formatters/index.js';
-import makeAstTree from './makeAstTree.js';
+import makeAstTree from './utils/makeAstTree.js';
 
 
 const genDiff = (filepath1, filepath2, formatOutput = 'stylish') => {
