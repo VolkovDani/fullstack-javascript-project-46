@@ -12,8 +12,8 @@ const genDiff = (filepath1, filepath2, formatOutput = 'stylish') => {
 export default genDiff;
 
 
-// const firstObj = './__fixtures__/file3.json';
-// const secondObj = './__fixtures__/file4.json';
+// const firstObj = './__fixtures__/newTests/file1.yml';
+// const secondObj = './__fixtures__/newTests/file2.yml';
 
 // console.log(setFormat(makeAstTree(parceFile(firstObj), parceFile(secondObj)), 'plain'));
 // console.log(JSON.stringify(getAllKeys(firstObj, secondObj)));

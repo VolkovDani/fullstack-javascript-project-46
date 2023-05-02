@@ -24,7 +24,7 @@ const genStr = (arr, spaceStr) => {
     return child
       .map(({ key, children, status, newValue, oldValue }) => {
         const templateSpace = String(spaceStr).repeat(2 + 4 * deep);
-        if (newValue || oldValue) {
+        if (status == 'updated') {
           return (
             `${templateSpace}- ` +
             `${key}: ${prepareObjValue(oldValue, deep + 1)}`.trim() +

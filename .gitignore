@@ -2,3 +2,4 @@
 /.vscode
 __tests__/manualTest.js
 /coverage
+/__fixtures__/newTests
