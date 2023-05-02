@@ -21,3 +21,7 @@ ___
 Or you can use "plain"
 ___
 [![asciicast](https://asciinema.org/a/Dgcrh0oxFvBq2mswk4Ba1bhr4.svg)](https://asciinema.org/a/Dgcrh0oxFvBq2mswk4Ba1bhr4)
+___
+
+You can use my JSON format for your further work with data
+[![asciicast](https://asciinema.org/a/EYiySL6zf7Tky0gjP5EOoKDGm.svg)](https://asciinema.org/a/EYiySL6zf7Tky0gjP5EOoKDGm)
