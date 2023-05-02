@@ -20,7 +20,7 @@ const genStr = (arr, spaceStr) => {
 
   const genStrChild = (child, deep = 0) => {
     let newStr = '';
-    child.map(({ key, children, status, value, newValue, oldValue }) => {
+    child.map(({ key, children, status, newValue, oldValue }) => {
       let strObj = '';
       const templateSpace = String(spaceStr).repeat(2 + 4 * deep);
       if (newValue || oldValue) {
@@ -40,21 +40,21 @@ const genStr = (arr, spaceStr) => {
       }
       if (status == 'deleted') {
         strObj += `${templateSpace}- ${key}: ${prepareObjValue(
-          value,
+          children,
           deep + 1
         )}`;
       }
       if (status == 'added') {
-        if (_.isObject(value)) {
+        if (_.isObject(children)) {
           strObj += `${templateSpace}+ ${key}: `;
-          strObj += prepareObjValue(value, deep + 1);
-        } else strObj += `${templateSpace}+ ${key}: ${value}\n`;
+          strObj += prepareObjValue(children, deep + 1);
+        } else strObj += `${templateSpace}+ ${key}: ${children}\n`;
       }
       if (status == 'equal') {
-        if (_.isObject(value)) {
+        if (_.isObject(children)) {
           strObj += `${templateSpace}  ${key}: `;
-          strObj += prepareObjValue(value, deep + 1);
-        } else strObj += `${templateSpace}  ${key}: ${value}\n`;
+          strObj += prepareObjValue(children, deep + 1);
+        } else strObj += `${templateSpace}  ${key}: ${children}\n`;
       }
       return (newStr += strObj);
     });

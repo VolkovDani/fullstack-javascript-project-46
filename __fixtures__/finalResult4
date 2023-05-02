@@ -5,17 +5,17 @@
       "children": [
         {
           "key": "follow",
-          "value": false,
+          "children": false,
           "status": "added"
         },
         {
           "key": "setting1",
-          "value": "Value 1",
+          "children": "Value 1",
           "status": "equal"
         },
         {
           "key": "setting2",
-          "value": 200,
+          "children": 200,
           "status": "deleted"
         },
         {
@@ -26,12 +26,12 @@
         },
         {
           "key": "setting4",
-          "value": "blah blah",
+          "children": "blah blah",
           "status": "added"
         },
         {
           "key": "setting5",
-          "value": {
+          "children": {
             "key5": "value5"
           },
           "status": "added"
@@ -53,12 +53,12 @@
             },
             {
               "key": "key",
-              "value": "value",
+              "children": "value",
               "status": "equal"
             },
             {
               "key": "ops",
-              "value": "vops",
+              "children": "vops",
               "status": "added"
             }
           ],
@@ -78,7 +78,7 @@
         },
         {
           "key": "foo",
-          "value": "bar",
+          "children": "bar",
           "status": "equal"
         },
         {
@@ -94,7 +94,7 @@
     },
     {
       "key": "group2",
-      "value": {
+      "children": {
         "abc": 12345,
         "deep": {
           "id": 45
@@ -104,7 +104,7 @@
     },
     {
       "key": "group3",
-      "value": {
+      "children": {
         "deep": {
           "id": {
             "number": 45
