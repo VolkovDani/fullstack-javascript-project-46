@@ -14,20 +14,19 @@ const checkExt = (filepath) => {
 
 const parceFile = (pathFile) => {
   const extens = checkExt(pathFile);
-  let str = "";
   try {
-    str = readFileSync(path.resolve(pathFile), "utf-8");
+    const str = readFileSync(path.resolve(pathFile), "utf-8");
+    switch (extens) {
+      case ".json":
+        return JSON.parse(str);
+      case ".yaml":
+      case ".yml":
+        return loadYAML(str);
+      default:
+        throw Error("Error in parce");
+    }
   } catch (e) {
     throw Error(e.name + ": " + e.message);
-  }
-  switch (extens) {
-    case ".json":
-      return JSON.parse(str);
-    case ".yaml":
-    case ".yml":
-      return loadYAML(str);
-    default:
-      throw Error("Error in parce");
   }
 };
 
