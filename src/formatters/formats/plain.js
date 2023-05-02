@@ -11,7 +11,7 @@ const checkBooleanNullComplex = (value) => {
 const genPlain = (arr) => {
   const genStr = (arr, keyParent) => {
     return arr.map(({ key, children, status, value, newValue, oldValue }) => {
-      let templateStr = `Property '${keyParent ? `${keyParent}.${key}` : key}`
+      const templateStr = `Property '${keyParent ? `${keyParent}.${key}` : key}`
       if (status == 'nested') {
         const modifiedPath = keyParent ? `${keyParent}.${key}` : key
         return genStr(children, modifiedPath).flat(1)
