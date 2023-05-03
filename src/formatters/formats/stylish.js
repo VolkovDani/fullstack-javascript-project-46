@@ -27,11 +27,9 @@ const genStr = (arr, spaceStr) => {
         if (status == 'updated') {
           return (
             `${templateSpace}- ` +
-            `${key}: ${prepareObjValue(oldValue, deep + 1)}`.trim() +
-            '\n' +
+            `${key}: ${prepareObjValue(oldValue, deep + 1)}` +
             `${templateSpace}+ ` +
-            `${key}: ${prepareObjValue(newValue, deep + 1)}`.trim() +
-            '\n'
+            `${key}: ${prepareObjValue(newValue, deep + 1)}` 
           );
         }
         if (status == 'nested') {
