@@ -1,7 +1,7 @@
-import _ from "lodash"
+import _ from 'lodash';
 
-const genJSON = (arr) => {
-  return {diffJSON: arr}
-}
+const genJSON = (diffJSON) => {
+  return JSON.stringify({ diffJSON });
+};
 
-export default genJSON
+export default genJSON;
