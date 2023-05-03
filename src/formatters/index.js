@@ -1,6 +1,6 @@
-import genStr from './formats/stylish.js';
-import genPlain from './formats/plain.js';
-import genJSON from './formats/json.js';
+import genStr from './formats/stylish';
+import genPlain from './formats/genPlain';
+import genJSON from './formats/json';
 
 const formatSelector = {
   stylish: ' ',
@@ -13,13 +13,13 @@ const formatSelector = {
 
 const selectFormatOutput = (arr, format) => {
   if (formatSelector[format]) {
-    if (format.startsWith('stylish'))
+    if (format.startsWith('stylish')) {
       return genStr(arr, formatSelector[format]);
-    if (format == 'plain') return genPlain(arr);
-    if (format == 'json') return genJSON(arr);
-  } else {
-    throw Error('Incorrect format. For example use stylish-dots');
+    }
+    if (format === 'plain') return genPlain(arr);
+    if (format === 'json') return genJSON(arr);
   }
+  throw Error('Incorrect format. For example use stylish-dots');
 };
 
 export default selectFormatOutput;
