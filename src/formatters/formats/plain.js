@@ -3,6 +3,7 @@ import _ from "lodash"
 const checkBooleanNullComplex = (value) => {
   if (typeof value == 'boolean' || value == null) return `${value}`
   if (_.isObject(value)) return '[complex value]'
+  if (typeof value === 'number') return `${value}`
   return `'${value}'`
 } 
 
