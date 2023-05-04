@@ -13,13 +13,13 @@ describe('Throw Errors', () => {
   test('ERR path', () => {
     expect(() => {
       genDiff();
-    }).toThrowError('Пустой путь к файлу');
+    }).toThrow('Пустой путь к файлу');
   });
 
   test('ERR extension', () => {
     expect(() => {
       genDiff('./__fixtures__/file1.yml', './__fixtures__/fakefile.ya');
-    }).toThrowError('Не поддерживаемый формат файла');
+    }).toThrow('Не поддерживаемый формат файла');
   });
 
   test('Uncorrect Format', () => {
@@ -29,7 +29,7 @@ describe('Throw Errors', () => {
         './__fixtures__/file2.json',
         'fakeFormat',
       );
-    }).toThrowError('Incorrect format. For example use stylish-dots');
+    }).toThrow('Incorrect format. For example use stylish-dots');
   });
 });
 
