@@ -4,7 +4,6 @@ env:
 extends:
   - airbnb-base
   - "plugin:jest/recommended"
-  - "plugin:fp/recommended"
 parserOptions:
   ecmaVersion: 11
   sourceType: module
