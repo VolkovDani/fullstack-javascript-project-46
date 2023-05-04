@@ -1,16 +1,16 @@
 import { Command } from 'commander';
-import genDiff from './genDiff';
+import genDiff from './genDiff.js';
 
-const program = new Command();
+const myProgram = new Command();
 
-program
+myProgram
   .description('Compares two configuration files and shows a difference.')
   .version('0.0.1')
   .arguments('<filepath1> <filepath2>')
   .option('-f, --format <type>', 'Choose type file', 'stylish')
   .action((filepath1, filepath2) => {
     // eslint-disable-next-line no-console
-    console.log(genDiff(filepath1, filepath2, program.opts().format));
+    console.log(genDiff(filepath1, filepath2, myProgram.opts().format));
   });
 
-export default program;
+export default myProgram;

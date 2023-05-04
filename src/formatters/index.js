@@ -1,6 +1,6 @@
-import genStr from './formats/stylish';
-import genPlain from './formats/genPlain';
-import genJSON from './formats/json';
+import genStr from './formats/stylish.js';
+import genPlain from './formats/genPlain.js';
+import genJSON from './formats/json.js';
 
 const formatSelector = {
   stylish: ' ',
