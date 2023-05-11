@@ -1,4 +1,4 @@
 #!/usr/bin/env node
-import myProgram from '../src/cli.js';
+import commanderConfig from '../src/cli.js';
 
-myProgram.parse();
+commanderConfig.parse();
