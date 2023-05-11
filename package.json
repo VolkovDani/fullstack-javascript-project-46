@@ -1,7 +1,7 @@
 {
   "name": "@hexlet/code",
   "version": "0.0.1",
-  "description": "[![Actions Status](https://github.com/DanilCrazy99/fullstack-javascript-project-46/workflows/hexlet-check/badge.svg)](https://github.com/DanilCrazy99/fullstack-javascript-project-46/actions)",
+  "description": "Generate output with the difference between your two files",
   "type": "module",
   "scripts": {
     "test": "jest"
