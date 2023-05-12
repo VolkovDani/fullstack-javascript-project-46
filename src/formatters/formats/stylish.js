@@ -21,7 +21,7 @@ const prepareObjValue = (child, spaceStr, deep = 0) => {
 
 const genStrChild = (child, spaceStr, deep = 0) => child
   .map(({
-    key, children, status, newValue, oldValue,
+    key, children, status, newValue, oldValue, value,
   }) => {
     const templateSpace = String(spaceStr).repeat(2 + 4 * deep);
     if (status === 'updated') {
@@ -41,17 +41,17 @@ const genStrChild = (child, spaceStr, deep = 0) => child
     }
     if (status === 'deleted') {
       return `${templateSpace}- ${key}: ${prepareObjValue(
-        children,
+        value,
         spaceStr,
         deep + 1,
       )}`;
     }
     if (status === 'added') {
-      if (_.isObject(children)) {
+      if (_.isObject(value)) {
         return (
-          `${templateSpace}+ ${key}: ${prepareObjValue(children, spaceStr, deep + 1)}`
+          `${templateSpace}+ ${key}: ${prepareObjValue(value, spaceStr, deep + 1)}`
         );
-      } return `${templateSpace}+ ${key}: ${children}\n`;
+      } return `${templateSpace}+ ${key}: ${value}\n`;
     }
     if (status === 'equal') {
       if (_.isObject(children)) {

@@ -9,7 +9,7 @@ const checkBooleanNullComplex = (value) => {
 
 const genPlain = (arrKeys) => {
   const genStr = (arr, keyParent) => arr.map(({
-    key, children, status, newValue, oldValue,
+    key, children, status, newValue, oldValue, value,
   }) => {
     const templateStr = `Property '${
       keyParent ? `${keyParent}.${key}` : key
@@ -20,7 +20,7 @@ const genPlain = (arrKeys) => {
     }
     if (status === 'added') {
       return `${templateStr}' was added with value: ${checkBooleanNullComplex(
-        children,
+        value,
       )}`;
     }
     if (status === 'deleted') return `${templateStr}' was removed`;
