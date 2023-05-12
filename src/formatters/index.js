@@ -2,24 +2,17 @@ import genStr from './formats/stylish.js';
 import genPlain from './formats/genPlain.js';
 import genJSON from './formats/json.js';
 
-const formatSelector = {
-  stylish: ' ',
-  'stylish-dots': '.',
-  'stylish-doubleSpace': '  ',
-  'stylish-sharp': '#',
-  plain: 1,
-  json: 1,
-};
-
 const selectFormatOutput = (arr, format) => {
-  if (formatSelector[format]) {
-    if (format.startsWith('stylish')) {
-      return genStr(arr, formatSelector[format]);
-    }
-    if (format === 'plain') return genPlain(arr);
-    if (format === 'json') return genJSON(arr);
+  switch (format) {
+    case 'stylish':
+      return genStr(arr, ' ');
+    case 'plain':
+      return genPlain(arr);
+    case 'json':
+      return genJSON(arr);
+    default:
+      throw Error('Incorrect format. For example use "plain"');
   }
-  throw Error('Incorrect format. For example use stylish-dots');
 };
 
 export default selectFormatOutput;

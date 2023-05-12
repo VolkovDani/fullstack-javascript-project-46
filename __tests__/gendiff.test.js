@@ -29,7 +29,7 @@ describe('Throw Errors', () => {
         './__fixtures__/file2.json',
         'fakeFormat',
       );
-    }).toThrow('Incorrect format. For example use stylish-dots');
+    }).toThrow('Incorrect format. For example use "plain');
   });
 });
 
