@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-const checkBooleanNullComplex = (value) => {
+const checkSpecialValues = (value) => {
   if (typeof value === 'boolean' || value == null) return `${value}`;
   if (_.isObject(value)) return '[complex value]';
   if (typeof value === 'number') return `${value}`;
@@ -19,15 +19,15 @@ const genPlain = (arrKeys) => {
       return genStr(children, modifiedPath).flat(1);
     }
     if (status === 'added') {
-      return `${templateStr}' was added with value: ${checkBooleanNullComplex(
+      return `${templateStr}' was added with value: ${checkSpecialValues(
         value,
       )}`;
     }
     if (status === 'deleted') return `${templateStr}' was removed`;
     if (status === 'updated') {
-      return `${templateStr}' was updated. From ${checkBooleanNullComplex(
+      return `${templateStr}' was updated. From ${checkSpecialValues(
         oldValue,
-      )} to ${checkBooleanNullComplex(newValue)}`;
+      )} to ${checkSpecialValues(newValue)}`;
     }
   });
   return genStr(arrKeys)

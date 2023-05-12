@@ -1,25 +1,24 @@
 import _ from 'lodash';
 
-const prepareObjValue = (child, spaceStr, deep = 0) => {
+const prepareValue = (child, spaceStr, deep = 0) => {
   if (!_.isObject(child)) return `${child}\n`;
   const templateSpace = String(spaceStr).repeat(4 + 4 * deep);
-  const templateSpaceForBracket = String(spaceStr).repeat(4 * deep);
   return (
     `{\n${
       _.keys(child)
         .map((key) => {
           if (_.isObject(child[key])) {
             return (
-              `${templateSpace}${key}: ${prepareObjValue(child[key], spaceStr, deep + 1)}`
+              `${templateSpace}${key}: ${prepareValue(child[key], spaceStr, deep + 1)}`
             );
           } return `${templateSpace}${key}: ${child[key]}\n`;
         })
         .join('')
-    }${templateSpaceForBracket}}\n`
+    }${String(spaceStr).repeat(4 * deep)}}\n`
   );
 };
 
-const genStrChild = (child, spaceStr, deep = 0) => child
+const genStrForObj = (obj, spaceStr, deep = 0) => obj
   .map(({
     key, children, status, newValue, oldValue, value,
   }) => {
@@ -27,20 +26,20 @@ const genStrChild = (child, spaceStr, deep = 0) => child
     if (status === 'updated') {
       return (
         `${templateSpace}- `
-          + `${key}: ${prepareObjValue(oldValue, spaceStr, deep + 1)}`
+          + `${key}: ${prepareValue(oldValue, spaceStr, deep + 1)}`
           + `${templateSpace}+ `
-          + `${key}: ${prepareObjValue(newValue, spaceStr, deep + 1)}`
+          + `${key}: ${prepareValue(newValue, spaceStr, deep + 1)}`
       );
     }
     if (status === 'nested') {
       return (
         `${templateSpace}  ${key}: {\n${
-          genStrChild(children, spaceStr, deep + 1)
+          genStrForObj(children, spaceStr, deep + 1)
         }${templateSpace}  }\n`
       );
     }
     if (status === 'deleted') {
-      return `${templateSpace}- ${key}: ${prepareObjValue(
+      return `${templateSpace}- ${key}: ${prepareValue(
         value,
         spaceStr,
         deep + 1,
@@ -49,20 +48,20 @@ const genStrChild = (child, spaceStr, deep = 0) => child
     if (status === 'added') {
       if (_.isObject(value)) {
         return (
-          `${templateSpace}+ ${key}: ${prepareObjValue(value, spaceStr, deep + 1)}`
+          `${templateSpace}+ ${key}: ${prepareValue(value, spaceStr, deep + 1)}`
         );
       } return `${templateSpace}+ ${key}: ${value}\n`;
     }
     if (status === 'equal') {
       if (_.isObject(children)) {
         return (
-          `${templateSpace}  ${key}: ${prepareObjValue(children, spaceStr, deep + 1)}`
+          `${templateSpace}  ${key}: ${prepareValue(children, spaceStr, deep + 1)}`
         );
       } return `${templateSpace}  ${key}: ${children}\n`;
     } return undefined;
   })
   .join('');
 
-const genStr = (arr, spaceStr) => `{\n${genStrChild(arr, spaceStr)}}`;
+const genStr = (arr, spaceStr) => `{\n${genStrForObj(arr, spaceStr)}}`;
 
 export default genStr;
