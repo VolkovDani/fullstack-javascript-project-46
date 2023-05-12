@@ -13,13 +13,13 @@ describe('Throw Errors', () => {
   test('ERR path', () => {
     expect(() => {
       genDiff();
-    }).toThrow('Пустой путь к файлу');
+    }).toThrow('Empty file path');
   });
 
   test('ERR extension', () => {
     expect(() => {
       genDiff('./__fixtures__/file1.yml', './__fixtures__/fakefile.ya');
-    }).toThrow('Не поддерживаемый формат файла');
+    }).toThrow('Non supported file extension');
   });
 
   test('Uncorrect Format', () => {

@@ -7,13 +7,13 @@ import makeAstTree from './utils/makeAstTree.js';
 const allowedExt = ['.json', '.yml', '.yaml'];
 
 const checkExt = (filepath) => {
-  if (!filepath) throw Error('Empty file path');
   const extFile = path.extname(filepath);
   if (!allowedExt.includes(extFile)) throw Error('Non supported file extension');
   return extFile;
 };
 
 const openFile = (pathFile) => {
+  if (!pathFile) throw Error('Empty file path');
   try {
     return readFileSync(path.resolve(pathFile), 'utf-8');
   } catch (e) {
