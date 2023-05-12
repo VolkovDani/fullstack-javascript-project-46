@@ -10,7 +10,6 @@ const checkBooleanNullComplex = (value) => {
 const genPlain = (arrKeys) => {
   const genStr = (arr, keyParent) => arr.map(({
     key, children, status, newValue, oldValue,
-  // eslint-disable-next-line array-callback-return, consistent-return
   }) => {
     const templateStr = `Property '${
       keyParent ? `${keyParent}.${key}` : key

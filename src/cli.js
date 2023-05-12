@@ -9,7 +9,6 @@ commanderConfig
   .arguments('<filepath1> <filepath2>')
   .option('-f, --format <type>', 'Choose type file', 'stylish')
   .action((filepath1, filepath2) => {
-    // eslint-disable-next-line no-console
     console.log(genDiff(filepath1, filepath2, commanderConfig.opts().format));
   });
 
