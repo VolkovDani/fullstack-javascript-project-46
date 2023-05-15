@@ -29,6 +29,7 @@ const genPlain = (arrKeys) => {
         oldValue,
       )} to ${checkSpecialValues(newValue)}`;
     }
+    return undefined;
   });
   return genStr(arrKeys)
     .flat(1)
