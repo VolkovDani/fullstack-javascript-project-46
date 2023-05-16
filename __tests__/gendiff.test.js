@@ -40,8 +40,12 @@ describe('Throw Errors', () => {
   });
 });
 
-test.each(extensions)('Stylish Format (%p)', (ext) => {
+test.each(extensions)('Default Format (%p)', (ext) => {
   expect(genDiff(getFixturePath(`file1.${ext}`), getFixturePath(`file2.${ext}`))).toStrictEqual(stylishResult);
+});
+
+test.each(extensions)('Stylish Format (%p)', (ext) => {
+  expect(genDiff(getFixturePath(`file1.${ext}`), getFixturePath(`file2.${ext}`, 'stylish'))).toStrictEqual(stylishResult);
 });
 
 test.each(extensions)('Plain Format (%p)', (ext) => {
