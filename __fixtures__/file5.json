@@ -1,9 +1,0 @@
-{
-  "hello": "hi",
-  "key1": "setting1",
-  "key2": "setting2",
-  "key3": {
-    "key4": "setting3",
-    "key5": ""
-  }
-}
