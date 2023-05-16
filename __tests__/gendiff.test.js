@@ -1,5 +1,5 @@
 import {
-  test, expect, describe, beforeAll,
+  test, expect, describe,
 } from '@jest/globals';
 import path, { dirname } from 'path';
 import fs from 'node:fs';
@@ -11,15 +11,10 @@ const myDirname = dirname(filename);
 const getFixturePath = (filenameFile) => path.join(myDirname, '..', '__fixtures__', filenameFile);
 const readFile = (filenameFile) => fs.readFileSync(getFixturePath(filenameFile), 'utf-8');
 
-let stylishResult;
-let plainResult;
-
 const extensions = ['json', 'yml'];
 
-beforeAll(() => {
-  stylishResult = readFile('stylishResult.txt');
-  plainResult = readFile('plainResult.txt');
-});
+const stylishResult = readFile('stylishResult.txt');
+const plainResult = readFile('plainResult.txt');
 
 describe('Throw Errors', () => {
   test('ERR path', () => {
@@ -46,14 +41,14 @@ describe('Throw Errors', () => {
 });
 
 test.each(extensions)('Stylish Format (%p)', (ext) => {
-  expect(genDiff(`./__fixtures__/file1.${ext}`, `./__fixtures__/file2.${ext}`)).toStrictEqual(stylishResult);
+  expect(genDiff(getFixturePath(`file1.${ext}`), getFixturePath(`file2.${ext}`))).toStrictEqual(stylishResult);
 });
 
 test.each(extensions)('Plain Format (%p)', (ext) => {
-  expect(genDiff(`./__fixtures__/file1.${ext}`, `./__fixtures__/file2.${ext}`, 'plain')).toStrictEqual(plainResult);
+  expect(genDiff(getFixturePath(`file1.${ext}`), getFixturePath(`file2.${ext}`), 'plain')).toStrictEqual(plainResult);
 });
 
 test.each(extensions)('JSON Format (%p)', (ext) => {
-  const data = genDiff(`./__fixtures__/file1.${ext}`, `./__fixtures__/file2.${ext}`, 'json');
+  const data = genDiff(getFixturePath(`file1.${ext}`), getFixturePath(`file2.${ext}`), 'json');
   expect(() => JSON.parse(data)).not.toThrow();
 });
