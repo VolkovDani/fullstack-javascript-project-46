@@ -14,22 +14,22 @@ const genPlain = (arrKeys) => {
     const templateStr = `Property '${
       keyParent ? `${keyParent}.${key}` : key
     }`;
-    if (status === 'nested') {
-      const modifiedPath = keyParent ? `${keyParent}.${key}` : key;
-      return genStr(children, modifiedPath).flat(1);
+    switch (status) {
+      case 'nested':
+        return genStr(children, (keyParent ? `${keyParent}.${key}` : key)).flat(1);
+      case 'added':
+        return `${templateStr}' was added with value: ${checkSpecialValues(
+          value,
+        )}`;
+      case 'deleted':
+        return `${templateStr}' was removed`;
+      case 'updated':
+        return `${templateStr}' was updated. From ${checkSpecialValues(
+          oldValue,
+        )} to ${checkSpecialValues(newValue)}`;
+      default:
+        return undefined;
     }
-    if (status === 'added') {
-      return `${templateStr}' was added with value: ${checkSpecialValues(
-        value,
-      )}`;
-    }
-    if (status === 'deleted') return `${templateStr}' was removed`;
-    if (status === 'updated') {
-      return `${templateStr}' was updated. From ${checkSpecialValues(
-        oldValue,
-      )} to ${checkSpecialValues(newValue)}`;
-    }
-    return undefined;
   });
   return genStr(arrKeys)
     .flat(1)
