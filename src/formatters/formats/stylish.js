@@ -23,44 +23,42 @@ const genStrForObj = (obj, spaceStr, deep = 0) => obj
     key, children, status, newValue, oldValue, value,
   }) => {
     const templateSpace = String(spaceStr).repeat(2 + 4 * deep);
-    if (status === 'updated') {
-      return (
-        `${templateSpace}- `
-          + `${key}: ${prepareValue(oldValue, spaceStr, deep + 1)}`
-          + `${templateSpace}+ `
-          + `${key}: ${prepareValue(newValue, spaceStr, deep + 1)}`
-      );
-    }
-    if (status === 'nested') {
-      return (
-        `${templateSpace}  ${key}: {\n${
-          genStrForObj(children, spaceStr, deep + 1)
-        }${templateSpace}  }\n`
-      );
-    }
-    if (status === 'deleted') {
-      return `${templateSpace}- ${key}: ${prepareValue(
-        value,
-        spaceStr,
-        deep + 1,
-      )}`;
-    }
-    if (status === 'added') {
-      if (_.isObject(value)) {
+    switch (status) {
+      case 'updated':
         return (
-          `${templateSpace}+ ${key}: ${prepareValue(value, spaceStr, deep + 1)}`
+          `${templateSpace}- `
+            + `${key}: ${prepareValue(oldValue, spaceStr, deep + 1)}`
+            + `${templateSpace}+ `
+            + `${key}: ${prepareValue(newValue, spaceStr, deep + 1)}`
         );
-      } return `${templateSpace}+ ${key}: ${value}\n`;
-    }
-    if (status === 'equal') {
-      if (_.isObject(children)) {
+      case 'nested':
         return (
-          `${templateSpace}  ${key}: ${prepareValue(children, spaceStr, deep + 1)}`
+          `${templateSpace}  ${key}: {\n${
+            genStrForObj(children, spaceStr, deep + 1)
+          }${templateSpace}  }\n`
         );
-      } return `${templateSpace}  ${key}: ${children}\n`;
-    } return undefined;
-  })
-  .join('');
+      case 'deleted':
+        return `${templateSpace}- ${key}: ${prepareValue(
+          value,
+          spaceStr,
+          deep + 1,
+        )}`;
+      case 'added':
+        if (_.isObject(value)) {
+          return (
+            `${templateSpace}+ ${key}: ${prepareValue(value, spaceStr, deep + 1)}`
+          );
+        } return `${templateSpace}+ ${key}: ${value}\n`;
+      case 'equal':
+        if (_.isObject(children)) {
+          return (
+            `${templateSpace}  ${key}: ${prepareValue(children, spaceStr, deep + 1)}`
+          );
+        } return `${templateSpace}  ${key}: ${children}\n`;
+      default:
+        return undefined;
+    }
+  }).join('');
 
 const genStr = (arr, spaceStr) => `{\n${genStrForObj(arr, spaceStr)}}`;
 
